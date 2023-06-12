@@ -86,6 +86,8 @@ class LlamaCpp(LLM):
         self.acceleration = acceleration
         if isinstance(tokenizer, str):
             self._tokenizer = AutoTokenizer.from_pretrained(tokenizer)
+        else:
+            self._tokenizer = tokenizer
         self._prefix_ids = [self._tokenizer.bos_token_id, 100]  # token ids that we use to decode tokens after a prefix
         self._prefix_str = self._tokenizer.decode(self._prefix_ids, fragment=False)
 
